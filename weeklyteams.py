@@ -9,7 +9,7 @@ import datetime
 
 ## Constants:
 startday = datetime.date(2021, 10, 11).timetuple().tm_yday
-currentday = datetime.date(2021, 10, 18).timetuple().tm_yday
+currentday = datetime.date.today().timetuple().tm_yday
 
 ## START
 teams = {}
@@ -42,10 +42,12 @@ with open('games.txt', 'r') as infile:
                 teams[team_2] += 1
             else: teams[team_2] = 1    
 
-        
+f = open("weekresult.txt", 'w')
+
 # find all teams with max games for the week
 max_games = max(teams.values())
 for team in teams:
     if teams[team] == max_games:
-        print(team)
-print(max_games)
+        f.write(team + '\n')
+f.write(str(max_games))
+f.close()
