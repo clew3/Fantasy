@@ -41,10 +41,10 @@ with open('games.txt', 'r') as infile:
             if team_2 in teams.keys():
                 teams[team_2] += 1
             else: teams[team_2] = 1   
-print(teams) 
 
-'''
+
 f = open("weekresult.txt", 'w')
+f.write("This is Week {}! \n".format(week_number))
 
 # find all teams with max games for the week
 max_games = max(teams.values())
@@ -52,4 +52,4 @@ for team in teams:
     if teams[team] == max_games:
         f.write(team + '\n')
 f.write(str(max_games))
-f.close()'''
+f.close()
