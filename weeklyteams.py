@@ -21,15 +21,15 @@ with open('games.txt', 'r') as infile:
         lst = line.split(',')
         x_date = lst[0].split('-')
         gamedate = datetime.date(int(x_date[0]), int(x_date[1]), int(x_date[2]))
-        day_of_year = gamedate.timetuple().tm_yday+1
+        day_of_year = gamedate.timetuple().tm_yday
 
         # if new year, add 365
         if day_of_year < 200:
             day_of_year += 365
         
         # isolate stretch of applicable dates
-        week_number = (currentday-startday)//7
-        if (day_of_year-startday)//7 == week_number:
+        week_number = (currentday-startday)//7 + 1
+        if (day_of_year-startday)//7 + 1 == week_number:
 
             # find teams, add to team_dictionary
             team_1, team_2 = lst[1], lst[3]
@@ -40,8 +40,10 @@ with open('games.txt', 'r') as infile:
 
             if team_2 in teams.keys():
                 teams[team_2] += 1
-            else: teams[team_2] = 1    
+            else: teams[team_2] = 1   
+print(teams) 
 
+'''
 f = open("weekresult.txt", 'w')
 
 # find all teams with max games for the week
@@ -50,4 +52,4 @@ for team in teams:
     if teams[team] == max_games:
         f.write(team + '\n')
 f.write(str(max_games))
-f.close()
+f.close()'''
